@@ -2,7 +2,7 @@
 This library manages access paths, avoids format and path not found issues and is cross-platform.
 
 ## Dependencies
-This library only use `os` and `pathlib` which are basic python libraries.
+This library only uses `os` and `pathlib` which are basic python libraries.
 > Note that `pathlib` requires a python version >= 3.4
 
 > To install this library, you will also need git installed on your computer. 
