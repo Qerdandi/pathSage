@@ -1,6 +1,0 @@
-Metadata-Version: 2.1
-Name: pathsage
-Version: 0.0.1
-Summary: This library manages access paths, avoids format and path not found issues and is cross-platform.
-Author: CyberTorii
-License: MIT

@@ -1,5 +1,0 @@
-pathsage.egg-info/PKG-INFO
-pathsage.egg-info/SOURCES.txt
-pathsage.egg-info/dependency_links.txt
-pathsage.egg-info/requires.txt
-pathsage.egg-info/top_level.txt
