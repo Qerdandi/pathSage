@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-class PathSage():
+class pathSage():
     def as_path(self, path):
         """This function allows to normalize the path put as parameter and return it as a string to be readable by all functions that need a path. It checks if the parameter is a string or a Path. It also checks if the path exists else if generate a ValueError: PEBCAK.
 
