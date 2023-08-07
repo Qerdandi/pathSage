@@ -1,6 +1,0 @@
-LICENSE
-setup.py
-pathSage.egg-info/PKG-INFO
-pathSage.egg-info/SOURCES.txt
-pathSage.egg-info/dependency_links.txt
-pathSage.egg-info/top_level.txt
