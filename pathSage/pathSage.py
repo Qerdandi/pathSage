@@ -1,4 +1,4 @@
-# V3.26.07.23
+# V4.17.08.23
 
 import os
 from pathlib import Path
@@ -14,7 +14,7 @@ class pathSage():
             string: the input path normalized.
         """
         
-        if not self.exists(path): return self.error()
+        if not self.exists(path): return self.error_e()
         return Path(path).as_posix() + '/'
     
     def as_file(self, path):
@@ -27,7 +27,7 @@ class pathSage():
             string: the input file path normalized.
         """
 
-        if not self.exists(path): return self.error()
+        if not self.exists(path): return self.error_e()
         return Path(path).as_posix()
     
     def as_new_path(self, path):
@@ -40,7 +40,7 @@ class pathSage():
             string: the input path normalized.
         """
 
-        if not self.valid(path): return self.error()
+        if not self.valid(path): return self.error_f()
         return Path(path).as_posix() + '/'
     
     def as_new_file(self, path):
@@ -53,7 +53,7 @@ class pathSage():
             string: the input file path normalized.
         """
 
-        if not self.valid(path): return self.error()
+        if not self.valid(path): return self.error_f()
         return Path(path).as_posix()
     
     def as_extension(self, extension: str):
@@ -95,7 +95,7 @@ class pathSage():
             Path: the concatenate path. You can use 'as_path()' or 'as_new_path()' to normalize it as string.
         """
 
-        if not self.valid(root): return self.error()
+        if not self.valid(root): return self.error_f()
 
         path = Path(root)
         for element in elements:
@@ -112,7 +112,7 @@ class pathSage():
             string: the file name without extension.
         """
 
-        if not self.valid(path): return self.error()
+        if not self.valid(path): return self.error_f()
         return Path(path).stem
 
     def name(self, path):
@@ -125,7 +125,7 @@ class pathSage():
             string: the file name with extension.
         """
 
-        if not self.valid(path): return self.error()
+        if not self.valid(path): return self.error_f()
         return Path(path).name
     
     def suffix(self, path):
@@ -138,7 +138,7 @@ class pathSage():
             string: the file extension.
         """
 
-        if not self.valid(path): return self.error()
+        if not self.valid(path): return self.error_f()
         return Path(path).suffix
     
     def parent_path(self, path, parent_nb: int):
@@ -195,7 +195,7 @@ class pathSage():
             boolean: true if the file has the same extension as the reference extension else false.
         """
 
-        if not self.exists(path): return self.error()
+        if not self.exists(path): return self.error_e()
         return Path(path).suffix in extension
     
     def file_start(self, path, pattern):
@@ -310,6 +310,23 @@ class pathSage():
         """
 
         os.remove(self.as_file(file_path))
+
+    def rename(self, current_path, new_path):
+        """This function allows to rename a directory or file name.
+
+        Args:
+            current_path (string | Path): the file or directory path that need to be renamed.
+            new_path (string | Path): the new file or directory path.
+
+        """
+
+        if not self.exists(current_path): return self.error_e()
+        if not self.valid(new_path): return self.error_f()
+
+        Path(current_path).rename(new_path)
     
-    def error(self):
-        raise ValueError("PEBCAK : Problem Exists Between Chair And Keyboard. Wrong format or path/file doesn't exist.")
+    def error_f(self):
+        raise ValueError("PEBCAK : Problem Exists Between Chair And Keyboard. Wrong parameter type.")
+    
+    def error_e(self):
+        raise ValueError("PEBCAK : Problem Exists Between Chair And Keyboard. The path or file defined in the parameter does not exist (or its type is incorrect).")
