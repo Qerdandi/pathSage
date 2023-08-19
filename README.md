@@ -5,7 +5,7 @@ This library manages access paths, avoids format and path not found issues and i
 This library only uses `os` and `pathlib` which are basic python libraries.
 > Note that `pathlib` requires a python version >= 3.4
 
-> To install this library, you will also need git installed on your computer. 
+> To install this library, you will also need [git](https://git-scm.com/downloads) installed on your computer. 
 
 ## Installation
 To install this library, open a `cmd` and write:
