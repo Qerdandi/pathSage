@@ -14,7 +14,7 @@ pip install git+https://github.com/CyberTorii/pathSage.git
 ```
 To update this library, open a `cmd` and write:
 ```
-pip install git+https://github.com/CyberTorii/pathSage.git --update
+pip install git+https://github.com/CyberTorii/pathSage.git -U
 ```
 
 ## Create your own library
