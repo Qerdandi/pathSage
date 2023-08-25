@@ -185,7 +185,7 @@ class pathSage():
         return isinstance(path, Path) or isinstance(path, str)
     
     def has_extension(self, path, extension):
-        """This function compares a file path with an extension defined as parameters.
+        """This function compares a file path with an extension defined as parameters (case insensitive).
 
         Args:
             path (string | Path): the file path to check.
@@ -194,9 +194,13 @@ class pathSage():
         Returns:
             boolean: true if the file has the same extension as the reference extension else false.
         """
-
+        
         if not self.exists(path): return self.error_e()
-        return Path(path).suffix in extension
+        
+        if isinstance(extension, str):
+            extension = [extension]
+
+        return (Path(path).suffix.lower() in [e.lower() for e in extension]) and Path(path).is_file()
     
     def file_start(self, path, pattern):
         """This function checks if the file name, containing in a path, starts with a defined pattern.
@@ -301,6 +305,16 @@ class pathSage():
             return [file.name for file in Path(path).iterdir() if self.has_extension(path, extension)]
         else:
             return [file.name for file in Path(path).iterdir()]
+        
+    def mkdir(self, folder_path):
+        """This function just creation a simple folder and check before if the folder doesn't already exist.
+
+        Args:
+            folder_path (string | Path): the folder path to create.
+        """
+        
+        if not self.exists(folder_path):
+            os.mkdir(folder_path)
         
     def delete(self, file_path):
         """This function allows to delete a file. It also checks if the parameter is a string or a Path and if the file exists else if generate a ValueError: PEBCAK.
