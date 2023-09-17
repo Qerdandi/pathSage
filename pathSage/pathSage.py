@@ -311,10 +311,14 @@ class pathSage():
 
         Args:
             folder_path (string | Path): the folder path to create.
+
+        Returns:
+            string: the folder path created.
         """
         
         if not self.exists(folder_path):
             os.mkdir(folder_path)
+        return self.as_file(folder_path)
         
     def delete(self, file_path):
         """This function allows to delete a file. It also checks if the parameter is a string or a Path and if the file exists else if generate a ValueError: PEBCAK.
